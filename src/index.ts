@@ -221,7 +221,7 @@ function onError(err: AxiosError) {
       err.response &&
       err.response.headers['retry-after']
     ) {
-      const retryAfter = parseRetryAfter(err.response.headers['retry-after']);
+      const retryAfter = parseRetryAfter(err.response.headers['x-retry-after']);
       if (retryAfter && retryAfter > 0 && retryAfter <= config.maxRetryAfter!) {
         delay = retryAfter;
       } else {
